@@ -89,5 +89,36 @@ IF NOT EXIST ".\lib\avctKVMIO.dll" (
 
 :CleanUpFiles
 
+setlocal EnableExtensions EnableDelayedExpansion
+
+set "UserChoice=N"
+set /P "UserChoice=Delete Temp Files [Y/N]? "
+
+if /I "!UserChoice!" == "N" endlocal & goto :no_clean
+if /I not "!UserChoice!" == "Y" goto :clean
+endlocal
+
+
+:UseChoice
+%SystemRoot%\System32\choice.exe /C YN /N /M "Are you sure [Y/N]?"
+if not errorlevel 1 goto UseChoice
+if errorlevel 2 goto :EOF
+
+:Continue
+echo So you are sure. Okay, let's go ...
+rem More commands can be added here.
+endlocal
+
+:clean
+
+echo "Cleaning up"
+pause
 RD /S /Q ".\lib"
 del /S /Q ".\avctKVM.jar"
+exit
+
+:no_clean
+
+echo "Leaving Files"
+pause
+exit
