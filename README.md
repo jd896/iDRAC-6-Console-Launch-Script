@@ -1,5 +1,5 @@
 # iDRAC-6-Console-Launch-Script
-launch idrac 6 with jre (no changinging security settings)
+launch idrac 6 with jre (no changing security settings)
 
 this builds on a script i found from user @xbb and a comment from user @ready4droid
 
