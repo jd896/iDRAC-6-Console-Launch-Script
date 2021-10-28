@@ -98,17 +98,6 @@ if /I "!UserChoice!" == "N" endlocal & goto :no_clean
 if /I not "!UserChoice!" == "Y" goto :clean
 endlocal
 
-
-:UseChoice
-%SystemRoot%\System32\choice.exe /C YN /N /M "Are you sure [Y/N]?"
-if not errorlevel 1 goto UseChoice
-if errorlevel 2 goto :EOF
-
-:Continue
-echo So you are sure. Okay, let's go ...
-rem More commands can be added here.
-endlocal
-
 :clean
 
 echo "Cleaning up"
@@ -122,3 +111,4 @@ exit
 echo "Leaving Files"
 pause
 exit
+
